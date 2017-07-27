@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Karpach.RemoteShutdown.Controller.Properties;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,7 +47,7 @@ namespace Karpach.RemoteShutdown.Controller
             Task.Run(() =>
             {
                 var host = new WebHostBuilder()                                                            
-                    .UseUrls("http://+:5001")
+                    .UseUrls($"http://+:{Settings.Default.RemotePort}")
                     .UseKestrel()
                     .Configure(app =>
                     {
