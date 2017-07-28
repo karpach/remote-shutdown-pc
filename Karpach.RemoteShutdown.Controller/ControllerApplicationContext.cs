@@ -14,18 +14,28 @@ namespace Karpach.RemoteShutdown.Controller
     {
         private readonly NotifyIcon _trayIcon;
         private readonly CancellationTokenSource _cancellationTokenSource;
+        private ToolStripMenuItem _commandButton;
 
         public ControllerApplicationContext()
         {
             _cancellationTokenSource = new CancellationTokenSource();            
             var notifyContextMenu = new ContextMenuStrip();
 
-            var hibernate = new ToolStripMenuItem("Hibernate")
+            _commandButton = new ToolStripMenuItem("Hibernate")
             {
                 Image = Resources.Shutdown.ToBitmap()
             };
-            hibernate.Click += Hibernate;
-            notifyContextMenu.Items.Add(hibernate);
+            _commandButton.Click += Hibernate;
+            notifyContextMenu.Items.Add(_commandButton);
+
+            notifyContextMenu.Items.Add("-");
+
+            var settings = new ToolStripMenuItem("Settings")
+            {
+                Image = Resources.Settings.ToBitmap()
+            };
+            settings.Click += SettingsClick;
+            notifyContextMenu.Items.Add(settings);
 
             notifyContextMenu.Items.Add("-");
 
@@ -61,6 +71,15 @@ namespace Karpach.RemoteShutdown.Controller
                     .Build();
                 host.Run();
             }, _cancellationTokenSource.Token);
+        }
+
+        private void SettingsClick(object sender, EventArgs e)
+        {
+            var dlg = new SettingsForm();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                _commandButton.Text = TrayCommandHelper.GetText(dlg.CommandType);
+            }
         }
 
         private void Hibernate(object sender, EventArgs e)
