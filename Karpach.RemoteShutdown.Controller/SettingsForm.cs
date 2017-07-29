@@ -1,29 +1,36 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using Karpach.RemoteShutdown.Controller.Interfaces;
+using Karpach.RemoteShutdown.Controller.Properties;
 
 namespace Karpach.RemoteShutdown.Controller
 {
     public partial class SettingsForm : Form
     {
-        public TrayCommandType CommandType { get; set; }
-        public bool AutoStart { get; set; }
+        public TrayCommandType CommandType => (TrayCommandType) cbxTrayCommand.SelectedValue;
+        public bool AutoStart => chkAutoLoad.Checked;
+        public int Port => int.Parse(txtPort.Text);
+        public string SecretCode => txtSecretCode.Text;
 
-        public SettingsForm()
+        public SettingsForm(ITrayCommandHelper trayCommandHelper)
         {
-            InitializeComponent();                        
+            InitializeComponent();
+            txtSecretCode.Text = Settings.Default.SecretCode;
+            txtPort.Text = Settings.Default.RemotePort.ToString();
+            chkAutoLoad.Checked = Settings.Default.AutoStart;            
             cbxTrayCommand.DisplayMember = "Name";
-            cbxTrayCommand.ValueMember = "CommandType";
-            cbxTrayCommand.DataSource = TrayCommandHelper.Commands;
-        }
+            cbxTrayCommand.ValueMember = "CommandType";            
+            cbxTrayCommand.DataSource = trayCommandHelper.Commands;
+            cbxTrayCommand.SelectedItem = trayCommandHelper.Commands.SingleOrDefault(c => (int)c.CommandType == Settings.Default.DefaultCommand);
+        }        
 
-        private void TrayCommandSelectedIndexChanged(object sender, EventArgs e)
+        private void txtPort_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            CommandType = (TrayCommandType)cbxTrayCommand.SelectedValue;
-        }
-
-        private void chkAutoLoad_CheckedChanged(object sender, EventArgs e)
-        {
-            AutoStart = chkAutoLoad.Checked;
+            if (!int.TryParse(txtPort.Text, out _))
+            {
+                e.Cancel = false;
+            }
         }
     }
 }

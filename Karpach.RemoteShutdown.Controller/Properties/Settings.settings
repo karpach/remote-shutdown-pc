@@ -2,8 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Karpach.RemoteShutdown.Controller.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="RemotePort" Type="System.String" Scope="User">
+    <Setting Name="RemotePort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5001</Value>
+    </Setting>
+    <Setting Name="AutoStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SecretCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DefaultCommand" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

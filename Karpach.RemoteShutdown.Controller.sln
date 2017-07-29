@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Controller", "Karpach.RemoteShutdown.Controller\Karpach.RemoteShutdown.Controller.csproj", "{6916CA57-9E37-48FE-B16C-44965008BEBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Controller.Tests", "Karpach.RemoteShutdown.Controller.Tests\Karpach.RemoteShutdown.Controller.Tests.csproj", "{99F5D844-29BC-4763-A473-642595B3FF16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|x64.ActiveCfg = Release|x64
 		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|x64.Build.0 = Release|x64
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|x64.ActiveCfg = Debug|x64
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|x64.Build.0 = Debug|x64
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|x64.ActiveCfg = Release|Any CPU
+		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

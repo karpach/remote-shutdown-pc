@@ -55,6 +55,9 @@
     <ApplicationIcon>Icons\switch.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Hosting, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Hosting.1.1.2\lib\net451\Microsoft.AspNetCore.Hosting.dll</HintPath>
     </Reference>
@@ -229,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerApplicationContext.cs" />
+    <Compile Include="Helpers\HostHelper.cs" />
+    <Compile Include="Interfaces\IHostHelper.cs" />
+    <Compile Include="Interfaces\ITrayCommandHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -243,7 +249,7 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TrayCommand.cs" />
-    <Compile Include="TrayCommandHelper.cs" />
+    <Compile Include="Helpers\TrayCommandHelper.cs" />
     <Compile Include="TrayCommandType.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -280,6 +286,10 @@
     <Content Include="Icons\settings.ico" />
     <Content Include="Icons\shutdown.ico" />
     <Content Include="Icons\switch.ico" />
+    <Content Include="Screenshots\Icon.png" />
+    <Content Include="Screenshots\Menu.png" />
+    <Content Include="Screenshots\Settings.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

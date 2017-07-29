@@ -3,29 +3,36 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Karpach.RemoteShutdown.Controller.Helpers;
+using Karpach.RemoteShutdown.Controller.Interfaces;
 using Karpach.RemoteShutdown.Controller.Properties;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Win32;
 
 namespace Karpach.RemoteShutdown.Controller
 {
     public class ControllerApplicationContext: ApplicationContext
     {
-        private readonly NotifyIcon _trayIcon;
-        private readonly CancellationTokenSource _cancellationTokenSource;
-        private ToolStripMenuItem _commandButton;
+        private readonly ITrayCommandHelper _trayCommandHelper;
+        private readonly SettingsForm _settingsForm;
+        private readonly IHostHelper _hostHelper;
+        private readonly NotifyIcon _trayIcon;        
+        private readonly ToolStripMenuItem _commandButton;
 
-        public ControllerApplicationContext()
+        public ControllerApplicationContext(ITrayCommandHelper trayCommandHelper, SettingsForm settingsForm, IHostHelper hostHelper)
         {
-            _cancellationTokenSource = new CancellationTokenSource();            
+            _trayCommandHelper = trayCommandHelper;
+            _settingsForm = settingsForm;
+            _hostHelper = hostHelper;
             var notifyContextMenu = new ContextMenuStrip();
 
-            _commandButton = new ToolStripMenuItem("Hibernate")
+            _commandButton = new ToolStripMenuItem(_trayCommandHelper.GetText((TrayCommandType)Settings.Default.DefaultCommand))
             {
                 Image = Resources.Shutdown.ToBitmap()
             };
-            _commandButton.Click += Hibernate;
+            _commandButton.Click += ShutDownClick;
             notifyContextMenu.Items.Add(_commandButton);
 
             notifyContextMenu.Items.Add("-");
@@ -54,44 +61,60 @@ namespace Karpach.RemoteShutdown.Controller
                 ContextMenuStrip = notifyContextMenu,
                 Visible = true
             };
-            Task.Run(() =>
-            {
-                var host = new WebHostBuilder()                                                            
-                    .UseUrls($"http://+:{Settings.Default.RemotePort}")
-                    .UseKestrel()
-                    .Configure(app =>
-                    {
-                        app.Run(async context =>
-                        {
-                            Hibernate(this,null);    
-                            context.Response.StatusCode = 204;
-                            await Task.Yield();
-                        });
-                    })
-                    .Build();
-                host.Run();
-            }, _cancellationTokenSource.Token);
+
+            _hostHelper.SecretCode = Settings.Default.SecretCode;
+            _hostHelper.DefaultCommand = (TrayCommandType)Settings.Default.DefaultCommand;
+            _hostHelper.CreateHostAsync(Settings.Default.RemotePort);
         }
 
         private void SettingsClick(object sender, EventArgs e)
-        {
-            var dlg = new SettingsForm();
-            if (dlg.ShowDialog() == DialogResult.OK)
+        {            
+            if (_settingsForm.ShowDialog() == DialogResult.OK)
             {
-                _commandButton.Text = TrayCommandHelper.GetText(dlg.CommandType);
+                if (Settings.Default.RemotePort != _settingsForm.Port)
+                {
+                    _hostHelper.CreateHostAsync(_settingsForm.Port);
+                }
+                if (Settings.Default.AutoStart != _settingsForm.AutoStart)
+                {
+                    SetAutoStart(_settingsForm.AutoStart);
+                }
+                _commandButton.Text = _trayCommandHelper.GetText(_settingsForm.CommandType);
+                Settings.Default.AutoStart = _settingsForm.AutoStart;
+                Settings.Default.DefaultCommand = (int)_settingsForm.CommandType;
+                Settings.Default.RemotePort = _settingsForm.Port;
+                Settings.Default.SecretCode = _settingsForm.SecretCode;                
+                Settings.Default.Save();
+                // Update host helper
+                _hostHelper.SecretCode = Settings.Default.SecretCode;
+                _hostHelper.DefaultCommand = (TrayCommandType)Settings.Default.DefaultCommand;
             }
         }
 
-        private void Hibernate(object sender, EventArgs e)
+        private void SetAutoStart(bool autoStart)
         {
-            Application.SetSuspendState(PowerState.Hibernate, true, true);
+            RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (autoStart)
+            {
+                // Add the value in the registry so that the application runs at startup
+                rkApp?.SetValue("Karpach.RemoteShutdown", Application.ExecutablePath);
+            }
+            else
+            {
+                rkApp?.DeleteValue("Karpach.RemoteShutdown", false);
+            }
+        }
+
+        private void ShutDownClick(object sender, EventArgs e)
+        {
+            _trayCommandHelper.RunCommand((TrayCommandType)Settings.Default.DefaultCommand);
         }
 
         void Exit(object sender, EventArgs e)
         {
             // Hide tray icon, otherwise it will remain shown until user mouses over it
             _trayIcon.Visible = false;            
-            _cancellationTokenSource.Cancel();
+            _hostHelper.Cancel();
             Application.Exit();
         }        
     }
