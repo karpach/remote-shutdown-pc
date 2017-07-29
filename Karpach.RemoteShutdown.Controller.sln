@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Controller.Tests", "Karpach.RemoteShutdown.Controller.Tests\Karpach.RemoteShutdown.Controller.Tests.csproj", "{99F5D844-29BC-4763-A473-642595B3FF16}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{48FFBBF8-E551-4C5F-8346-3468CBB7E229}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

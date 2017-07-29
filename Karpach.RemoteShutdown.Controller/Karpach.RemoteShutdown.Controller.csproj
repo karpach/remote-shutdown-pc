@@ -228,7 +228,6 @@
       <Visible>False</Visible>
       <Link>libuv.dll</Link>
     </None>
-    <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerApplicationContext.cs" />
@@ -286,9 +285,6 @@
     <Content Include="Icons\settings.ico" />
     <Content Include="Icons\shutdown.ico" />
     <Content Include="Icons\switch.ico" />
-    <Content Include="Screenshots\Icon.png" />
-    <Content Include="Screenshots\Menu.png" />
-    <Content Include="Screenshots\Settings.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
