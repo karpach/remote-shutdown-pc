@@ -35,3 +35,5 @@ http://remote-host-name:5001/secret/
 * http://remote-host-name:5001/secret/suspend
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
+
+[![Build status](https://ci.appveyor.com/api/projects/status/u1txabmiwqqlgcot?svg=true)](https://ci.appveyor.com/project/karpach/remote-shutdown-pc)
