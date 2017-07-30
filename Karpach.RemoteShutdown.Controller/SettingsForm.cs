@@ -27,7 +27,8 @@ namespace Karpach.RemoteShutdown.Controller
 
         private void txtPort_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!int.TryParse(txtPort.Text, out _))
+            int port;
+            if (!int.TryParse(txtPort.Text, out port))
             {
                 e.Cancel = false;
             }
