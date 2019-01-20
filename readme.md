@@ -1,5 +1,5 @@
 ﻿# Remote Shutdown Manager
-The project is a windows application, which gives an ability to shutdown, suspend, hibernate PC or turn off screen using HTTP GET request.
+The project is a windows application, which gives an ability to shutdown, suspend, hibernate PC or turn screen off using HTTP GET request.
 
 The application stays in a system tray area, where you can trigger custom command shutdown as well.
 
