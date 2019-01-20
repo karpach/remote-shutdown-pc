@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Karpach.RemoteShutdown.Controller.Interfaces;
 
@@ -10,9 +11,18 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
     {
         private TrayCommand[] _commands;
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(
+            IntPtr hWnd,
+            UInt32 msg,
+            IntPtr wParam,
+            IntPtr lParam
+        );
+
         public TrayCommand[] Commands => _commands ?? (_commands = new[]
         {
             new TrayCommand {CommandType = TrayCommandType.Hibernate, Name = "Hibernate"},
+            new TrayCommand {CommandType = TrayCommandType.TurnScreenOff, Name = "Turn screen off"},
             new TrayCommand {CommandType = TrayCommandType.Suspend, Name = "Suspend"},
             new TrayCommand {CommandType = TrayCommandType.Shutdown, Name = "Shutdown"}
         });
@@ -39,6 +49,14 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                     break;
                 case TrayCommandType.Suspend:
                     Application.SetSuspendState(PowerState.Suspend, true, true);
+                    break;
+                case TrayCommandType.TurnScreenOff:
+                    SendMessage(
+                        (IntPtr)0xffff, // HWND_BROADCAST
+                        0x0112,         // WM_SYSCOMMAND
+                        (IntPtr)0xf170, // SC_MONITORPOWER
+                        (IntPtr)0x0002  // POWER_OFF
+                    );
                     break;
             }
         }

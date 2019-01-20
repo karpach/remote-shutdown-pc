@@ -4,6 +4,7 @@
     {
         Hibernate,
         Shutdown,
-        Suspend
+        Suspend,
+        TurnScreenOff
     }
 }
