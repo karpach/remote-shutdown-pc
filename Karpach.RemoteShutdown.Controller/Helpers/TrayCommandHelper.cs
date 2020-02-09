@@ -58,6 +58,9 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                         (IntPtr)0x0002  // POWER_OFF
                     );
                     break;
+                case TrayCommandType.ForceShutdown:
+                    Process.Start("shutdown", "/s /f /t 10");
+                    break;                    
             }
         }
     }

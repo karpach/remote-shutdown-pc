@@ -5,6 +5,7 @@
         Hibernate,
         Shutdown,
         Suspend,
-        TurnScreenOff
+        TurnScreenOff,
+        ForceShutdown,
     }
 }
