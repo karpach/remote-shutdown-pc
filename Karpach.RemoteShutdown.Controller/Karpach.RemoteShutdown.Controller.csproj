@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icons\switch.ico</ApplicationIcon>

@@ -4,6 +4,7 @@
     <TargetFramework>net472</TargetFramework>
     <IsPackable>false</IsPackable>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
