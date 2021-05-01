@@ -1,43 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Controller", "Karpach.RemoteShutdown.Controller\Karpach.RemoteShutdown.Controller.csproj", "{6916CA57-9E37-48FE-B16C-44965008BEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karpach.RemoteShutdown.Controller", "Karpach.RemoteShutdown.Controller\Karpach.RemoteShutdown.Controller.csproj", "{9DD32BBC-32A1-40E1-BDDD-5F149FB5B1DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.RemoteShutdown.Controller.Tests", "Karpach.RemoteShutdown.Controller.Tests\Karpach.RemoteShutdown.Controller.Tests.csproj", "{99F5D844-29BC-4763-A473-642595B3FF16}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{48FFBBF8-E551-4C5F-8346-3468CBB7E229}"
-	ProjectSection(SolutionItems) = preProject
-		readme.md = readme.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Karpach.RemoteShutdown.Controller.Tests", "Karpach.RemoteShutdown.Controller.Tests\Karpach.RemoteShutdown.Controller.Tests.csproj", "{B6BAB5AD-9A40-4976-8029-A19F57F741FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Debug|x64.ActiveCfg = Debug|x64
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Debug|x64.Build.0 = Debug|x64
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|x64.ActiveCfg = Release|x64
-		{6916CA57-9E37-48FE-B16C-44965008BEBD}.Release|x64.Build.0 = Release|x64
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|x64.ActiveCfg = Debug|x64
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Debug|x64.Build.0 = Debug|x64
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|x64.ActiveCfg = Release|Any CPU
-		{99F5D844-29BC-4763-A473-642595B3FF16}.Release|x64.Build.0 = Release|Any CPU
+		{9DD32BBC-32A1-40E1-BDDD-5F149FB5B1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD32BBC-32A1-40E1-BDDD-5F149FB5B1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD32BBC-32A1-40E1-BDDD-5F149FB5B1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD32BBC-32A1-40E1-BDDD-5F149FB5B1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BAB5AD-9A40-4976-8029-A19F57F741FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BAB5AD-9A40-4976-8029-A19F57F741FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BAB5AD-9A40-4976-8029-A19F57F741FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BAB5AD-9A40-4976-8029-A19F57F741FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7695789D-082D-4210-8FCF-60A40C190897}
 	EndGlobalSection
 EndGlobal
