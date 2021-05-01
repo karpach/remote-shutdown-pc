@@ -25,10 +25,10 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
         public TrayCommand[] Commands => _commands ?? (_commands = new[]
         {
             new TrayCommand {CommandType = TrayCommandType.Hibernate, Name = "Hibernate"},
-            new TrayCommand {CommandType = TrayCommandType.TurnScreenOff, Name = "Turn screen off"},
+            new TrayCommand {CommandType = TrayCommandType.TurnScreenOff, Name = "TurnScreenOff"},
             new TrayCommand {CommandType = TrayCommandType.Suspend, Name = "Suspend"},
             new TrayCommand {CommandType = TrayCommandType.Shutdown, Name = "Shutdown"},
-            new TrayCommand {CommandType = TrayCommandType.ForceShutdown, Name = "Force Shutdown"},
+            new TrayCommand {CommandType = TrayCommandType.ForceShutdown, Name = "ForceShutdown"},
             new TrayCommand {CommandType = TrayCommandType.Lock, Name = "Lock" }
         });
 
