@@ -30,9 +30,11 @@ http://remote-host-name:5001/secret/
 
 3. Sectret code custom command:
 
-* http://remote-host-name:5001/secret/hibernate
-* http://remote-host-name:5001/secret/shutdown
-* http://remote-host-name:5001/secret/suspend
+* http://remote-host-name:5001/secret/hibernate/
+* http://remote-host-name:5001/secret/shutdown/
+* http://remote-host-name:5001/secret/suspend/
+* http://remote-host-name:5001/secret/turnoffscreen/
+* http://remote-host-name:5001/secret/lock/
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
 
