@@ -7,5 +7,6 @@
         Suspend,
         TurnScreenOff,
         ForceShutdown,
+		Lock
     }
 }

@@ -19,13 +19,17 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
             IntPtr lParam
         );
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern bool LockWorkStation();
+
         public TrayCommand[] Commands => _commands ?? (_commands = new[]
         {
             new TrayCommand {CommandType = TrayCommandType.Hibernate, Name = "Hibernate"},
             new TrayCommand {CommandType = TrayCommandType.TurnScreenOff, Name = "Turn screen off"},
             new TrayCommand {CommandType = TrayCommandType.Suspend, Name = "Suspend"},
             new TrayCommand {CommandType = TrayCommandType.Shutdown, Name = "Shutdown"},
-            new TrayCommand {CommandType = TrayCommandType.ForceShutdown, Name = "Force Shutdown"}
+            new TrayCommand {CommandType = TrayCommandType.ForceShutdown, Name = "Force Shutdown"},
+            new TrayCommand {CommandType = TrayCommandType.Lock, Name = "Lock" }
         });
 
         public string GetText(TrayCommandType commandType)
@@ -61,7 +65,10 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                     break;
                 case TrayCommandType.ForceShutdown:
                     Process.Start("shutdown", "/s /f /t 10");
-                    break;                    
+                    break;
+                case TrayCommandType.Lock:
+	                LockWorkStation();
+	                break;
             }
         }
     }
