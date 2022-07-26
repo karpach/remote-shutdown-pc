@@ -47,7 +47,7 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                         });
                     })
                     .Build();
-                host.Run(_cancellationTokenSource.Token);                
+                host.StartAsync(_cancellationTokenSource.Token);                
             }, _cancellationTokenSource.Token);
         }
 
