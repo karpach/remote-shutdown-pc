@@ -26,6 +26,7 @@ namespace Karpach.RemoteShutdown.Controller
             builder.RegisterType<HostHelper>().As<IHostHelper>();
             Container = builder.Build();
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<ControllerApplicationContext>());
         }

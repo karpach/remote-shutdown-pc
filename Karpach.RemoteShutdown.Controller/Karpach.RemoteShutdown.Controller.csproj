@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net480</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
@@ -20,55 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Libuv" Version="1.10.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />  
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Autofac" Version="4.6.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.2" />	
-	<PackageReference Include="Microsoft.AspNetCore.Connections.Abstractions" Version="2.2.0.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.2.0.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0.0" />		
-	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Core" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0.0" />      
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0.0" />      
-    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.0.0" />      
-      
-	<Reference Include="System.IO.Compression.FileSystem" />
-	<Reference Include="System.Numerics" />
-	<Reference Include="System.Core" />
-	<Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />          
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
+    
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

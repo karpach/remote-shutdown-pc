@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net480</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <IsPackable>false</IsPackable>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Platforms>x64</Platforms>
@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.9.4" />
     <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="Moq.AutoMock" Version="2.3.0" />    
+    <PackageReference Include="Moq.AutoMock" Version="2.3.0" />
     <PackageReference Include="coverlet.collector" Version="1.3.0" />
     <PackageReference Include="NUnit" Version="3.13.2" />
   </ItemGroup>

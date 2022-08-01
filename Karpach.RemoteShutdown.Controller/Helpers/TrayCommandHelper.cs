@@ -67,8 +67,8 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                     Process.Start("shutdown", "/s /f /t 10");
                     break;
                 case TrayCommandType.Lock:
-	                LockWorkStation();
-	                break;
+                    LockWorkStation();
+                    break;
             }
         }
     }
