@@ -39,7 +39,7 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
 
         public TrayCommandType? GetCommandType(string commandName)
         {
-            return Commands.SingleOrDefault(c => string.Equals(c.Name, commandName, StringComparison.InvariantCultureIgnoreCase))?.CommandType;
+            return Commands.SingleOrDefault(c => string.Equals(c.CommandType.ToString(), commandName, StringComparison.InvariantCultureIgnoreCase))?.CommandType;
         }
 
         public void RunCommand(TrayCommandType commandType)
