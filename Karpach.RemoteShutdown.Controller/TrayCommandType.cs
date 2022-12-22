@@ -2,12 +2,12 @@
 {
     public enum TrayCommandType
     {
-		Restart,
+        Restart,
         Hibernate,
         Shutdown,
         Suspend,
         TurnScreenOff,
         ForceShutdown,
-		Lock
+        Lock
     }
 }

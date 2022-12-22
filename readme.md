@@ -1,12 +1,4 @@
-﻿This is a Fork repository from [karpach/remote-shutdown-pc](https://github.com/karpach/remote-shutdown-pc) !!!!!!
- 
- I just added the possibility to restart the computer. Tested and working ! :)
- 
- 
- 
- 
- 
- # Remote Shutdown Manager
+﻿# Remote Shutdown Manager
 The project is a windows application, which gives an ability to shutdown, suspend, hibernate PC, **restart** or turn screen off using HTTP GET request.
 
 The application stays in a system tray area, where you can trigger custom command shutdown as well.
@@ -43,6 +35,7 @@ http://remote-host-name:5001/secret/
 * http://remote-host-name:5001/secret/suspend
 * http://remote-host-name:5001/secret/turnscreenoff/
 * http://remote-host-name:5001/secret/lock/
+* http://remote-host-name:5001/secret/restart/
 * http://remote-host-name:5001/secret/ForceShutdown
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
