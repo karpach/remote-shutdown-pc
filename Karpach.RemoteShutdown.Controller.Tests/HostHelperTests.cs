@@ -24,6 +24,7 @@ namespace Karpach.RemoteShutdown.Controller.Tests
 
         [Test]  
         [TestCase("shutdown", TrayCommandType.Shutdown)]
+        [TestCase("restart", TrayCommandType.Restart)]
         [TestCase("hibernate", TrayCommandType.Hibernate)]
         public async Task ProcessRequestAsync_Ignore_Secret(string commandText, TrayCommandType command)
         {
@@ -39,6 +40,7 @@ namespace Karpach.RemoteShutdown.Controller.Tests
 
         [Test]
         [TestCase("shutdown", TrayCommandType.Shutdown)]
+        [TestCase("restart", TrayCommandType.Restart)]
         [TestCase("hibernate", TrayCommandType.Hibernate)]
         public async Task ProcessRequestAsync_No_Secret(string commandText, TrayCommandType command)
         {

@@ -25,6 +25,7 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
         public TrayCommand[] Commands => _commands ?? (_commands = new[]
         {
             new TrayCommand {CommandType = TrayCommandType.Hibernate, Name = "Hibernate"},
+            new TrayCommand {CommandType = TrayCommandType.Restart, Name = "Restart"},
             new TrayCommand {CommandType = TrayCommandType.TurnScreenOff, Name = "Turn screen off"},
             new TrayCommand {CommandType = TrayCommandType.Suspend, Name = "Suspend"},
             new TrayCommand {CommandType = TrayCommandType.Shutdown, Name = "Shutdown"},
@@ -48,6 +49,9 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
             {
                 case TrayCommandType.Hibernate:
                     Application.SetSuspendState(PowerState.Hibernate, true, true);
+                    break;
+				case TrayCommandType.Restart:
+                    Process.Start("shutdown", "/r /t 0");
                     break;
                 case TrayCommandType.Shutdown:
                     Process.Start("shutdown", "/s /t 0");
