@@ -36,7 +36,7 @@ http://remote-host-name:5001/secret/
 * http://remote-host-name:5001/secret/turnscreenoff/
 * http://remote-host-name:5001/secret/lock/
 * http://remote-host-name:5001/secret/restart/
-* http://remote-host-name:5001/secret/ForceShutdown
+* http://remote-host-name:5001/secret/forceshutdown
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
 
