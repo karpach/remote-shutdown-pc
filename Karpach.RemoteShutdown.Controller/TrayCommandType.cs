@@ -5,6 +5,8 @@
         Restart,
         Hibernate,
         Shutdown,
+        Program1,
+        Program2,
         Suspend,
         TurnScreenOff,
         ForceShutdown,

@@ -83,7 +83,9 @@ namespace Karpach.RemoteShutdown.Controller
                 Settings.Default.AutoStart = _settingsForm.AutoStart;
                 Settings.Default.DefaultCommand = (int)_settingsForm.CommandType;
                 Settings.Default.RemotePort = _settingsForm.Port;
-                Settings.Default.SecretCode = _settingsForm.SecretCode;                
+                Settings.Default.SecretCode = _settingsForm.SecretCode;
+                Settings.Default.Filename1 = _settingsForm.Filename1;       //Zomar added
+                Settings.Default.Filename2 = _settingsForm.Filename2;       //Zomar added
                 Settings.Default.Save();
                 // Update host helper
                 _hostHelper.SecretCode = Settings.Default.SecretCode;

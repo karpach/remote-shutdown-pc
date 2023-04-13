@@ -20,6 +20,9 @@
     <Content Include="Icons\switch.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Libuv" Version="1.10.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Autofac" Version="4.6.1" />

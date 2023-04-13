@@ -28,131 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-			this.chkAutoLoad = new System.Windows.Forms.CheckBox();
-			this.lbDefaultCommand = new System.Windows.Forms.Label();
-			this.cbxTrayCommand = new System.Windows.Forms.ComboBox();
-			this.btnOk = new System.Windows.Forms.Button();
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.lbSecretCode = new System.Windows.Forms.Label();
-			this.txtSecretCode = new System.Windows.Forms.TextBox();
-			this.lbPort = new System.Windows.Forms.Label();
-			this.txtPort = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// chkAutoLoad
-			// 
-			this.chkAutoLoad.AutoSize = true;
-			this.chkAutoLoad.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.chkAutoLoad.Location = new System.Drawing.Point(21, 14);
-			this.chkAutoLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.chkAutoLoad.Name = "chkAutoLoad";
-			this.chkAutoLoad.Size = new System.Drawing.Size(186, 19);
-			this.chkAutoLoad.TabIndex = 1;
-			this.chkAutoLoad.Text = "Auto load at Windows startup:";
-			this.chkAutoLoad.UseVisualStyleBackColor = true;
-			// 
-			// lbDefaultCommand
-			// 
-			this.lbDefaultCommand.AutoSize = true;
-			this.lbDefaultCommand.Location = new System.Drawing.Point(50, 46);
-			this.lbDefaultCommand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lbDefaultCommand.Name = "lbDefaultCommand";
-			this.lbDefaultCommand.Size = new System.Drawing.Size(132, 15);
-			this.lbDefaultCommand.TabIndex = 2;
-			this.lbDefaultCommand.Text = "System Tray Command:";
-			// 
-			// cbxTrayCommand
-			// 
-			this.cbxTrayCommand.FormattingEnabled = true;
-			this.cbxTrayCommand.Location = new System.Drawing.Point(194, 43);
-			this.cbxTrayCommand.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.cbxTrayCommand.Name = "cbxTrayCommand";
-			this.cbxTrayCommand.Size = new System.Drawing.Size(140, 23);
-			this.cbxTrayCommand.TabIndex = 3;
-			// 
-			// btnOk
-			// 
-			this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnOk.Location = new System.Drawing.Point(97, 168);
-			this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.btnOk.Name = "btnOk";
-			this.btnOk.Size = new System.Drawing.Size(88, 27);
-			this.btnOk.TabIndex = 4;
-			this.btnOk.Text = "Ok";
-			this.btnOk.UseVisualStyleBackColor = true;
-			// 
-			// btnCancel
-			// 
-			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(194, 168);
-			this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(88, 27);
-			this.btnCancel.TabIndex = 4;
-			this.btnCancel.Text = "Cancel";
-			this.btnCancel.UseVisualStyleBackColor = true;
-			// 
-			// lbSecretCode
-			// 
-			this.lbSecretCode.AutoSize = true;
-			this.lbSecretCode.Location = new System.Drawing.Point(107, 84);
-			this.lbSecretCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lbSecretCode.Name = "lbSecretCode";
-			this.lbSecretCode.Size = new System.Drawing.Size(73, 15);
-			this.lbSecretCode.TabIndex = 2;
-			this.lbSecretCode.Text = "Secret Code:";
-			// 
-			// txtSecretCode
-			// 
-			this.txtSecretCode.Location = new System.Drawing.Point(194, 81);
-			this.txtSecretCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.txtSecretCode.Name = "txtSecretCode";
-			this.txtSecretCode.Size = new System.Drawing.Size(140, 23);
-			this.txtSecretCode.TabIndex = 5;
-			// 
-			// lbPort
-			// 
-			this.lbPort.AutoSize = true;
-			this.lbPort.Location = new System.Drawing.Point(154, 121);
-			this.lbPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lbPort.Name = "lbPort";
-			this.lbPort.Size = new System.Drawing.Size(32, 15);
-			this.lbPort.TabIndex = 2;
-			this.lbPort.Text = "Port:";
-			// 
-			// txtPort
-			// 
-			this.txtPort.Location = new System.Drawing.Point(194, 118);
-			this.txtPort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.txtPort.Name = "txtPort";
-			this.txtPort.Size = new System.Drawing.Size(140, 23);
-			this.txtPort.TabIndex = 5;
-			this.txtPort.Validating += new System.ComponentModel.CancelEventHandler(this.txtPort_Validating);
-			// 
-			// SettingsForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 212);
-			this.Controls.Add(this.txtPort);
-			this.Controls.Add(this.txtSecretCode);
-			this.Controls.Add(this.btnCancel);
-			this.Controls.Add(this.btnOk);
-			this.Controls.Add(this.cbxTrayCommand);
-			this.Controls.Add(this.lbPort);
-			this.Controls.Add(this.lbSecretCode);
-			this.Controls.Add(this.lbDefaultCommand);
-			this.Controls.Add(this.chkAutoLoad);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.MaximizeBox = false;
-			this.Name = "SettingsForm";
-			this.Text = "Settings";
-			this.ResumeLayout(false);
-			this.PerformLayout();
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
+            chkAutoLoad = new System.Windows.Forms.CheckBox();
+            lbDefaultCommand = new System.Windows.Forms.Label();
+            cbxTrayCommand = new System.Windows.Forms.ComboBox();
+            btnOk = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            lbSecretCode = new System.Windows.Forms.Label();
+            txtSecretCode = new System.Windows.Forms.TextBox();
+            lbPort = new System.Windows.Forms.Label();
+            txtPort = new System.Windows.Forms.TextBox();
+            txtFilename1 = new System.Windows.Forms.TextBox();
+            lbFilename1 = new System.Windows.Forms.Label();
+            txtFilename2 = new System.Windows.Forms.TextBox();
+            lbFilename2 = new System.Windows.Forms.Label();
+            SuspendLayout();
+            // 
+            // chkAutoLoad
+            // 
+            chkAutoLoad.AutoSize = true;
+            chkAutoLoad.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            chkAutoLoad.Location = new System.Drawing.Point(21, 15);
+            chkAutoLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkAutoLoad.Name = "chkAutoLoad";
+            chkAutoLoad.Size = new System.Drawing.Size(186, 19);
+            chkAutoLoad.TabIndex = 1;
+            chkAutoLoad.Text = "Auto load at Windows startup:";
+            chkAutoLoad.UseVisualStyleBackColor = true;
+            // 
+            // lbDefaultCommand
+            // 
+            lbDefaultCommand.AutoSize = true;
+            lbDefaultCommand.Location = new System.Drawing.Point(53, 48);
+            lbDefaultCommand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lbDefaultCommand.Name = "lbDefaultCommand";
+            lbDefaultCommand.Size = new System.Drawing.Size(132, 15);
+            lbDefaultCommand.TabIndex = 2;
+            lbDefaultCommand.Text = "System Tray Command:";
+            // 
+            // cbxTrayCommand
+            // 
+            cbxTrayCommand.FormattingEnabled = true;
+            cbxTrayCommand.Location = new System.Drawing.Point(194, 45);
+            cbxTrayCommand.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbxTrayCommand.Name = "cbxTrayCommand";
+            cbxTrayCommand.Size = new System.Drawing.Size(140, 23);
+            cbxTrayCommand.TabIndex = 3;
+            // 
+            // btnOk
+            // 
+            btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnOk.Location = new System.Drawing.Point(97, 222);
+            btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnOk.Name = "btnOk";
+            btnOk.Size = new System.Drawing.Size(88, 27);
+            btnOk.TabIndex = 4;
+            btnOk.Text = "Ok";
+            btnOk.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Location = new System.Drawing.Point(194, 222);
+            btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(88, 27);
+            btnCancel.TabIndex = 4;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // lbSecretCode
+            // 
+            lbSecretCode.AutoSize = true;
+            lbSecretCode.Location = new System.Drawing.Point(112, 83);
+            lbSecretCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lbSecretCode.Name = "lbSecretCode";
+            lbSecretCode.Size = new System.Drawing.Size(73, 15);
+            lbSecretCode.TabIndex = 2;
+            lbSecretCode.Text = "Secret Code:";
+            // 
+            // txtSecretCode
+            // 
+            txtSecretCode.Location = new System.Drawing.Point(194, 80);
+            txtSecretCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtSecretCode.Name = "txtSecretCode";
+            txtSecretCode.Size = new System.Drawing.Size(140, 23);
+            txtSecretCode.TabIndex = 5;
+            // 
+            // lbPort
+            // 
+            lbPort.AutoSize = true;
+            lbPort.Location = new System.Drawing.Point(154, 118);
+            lbPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lbPort.Name = "lbPort";
+            lbPort.Size = new System.Drawing.Size(32, 15);
+            lbPort.TabIndex = 2;
+            lbPort.Text = "Port:";
+            // 
+            // txtPort
+            // 
+            txtPort.Location = new System.Drawing.Point(194, 115);
+            txtPort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtPort.Name = "txtPort";
+            txtPort.Size = new System.Drawing.Size(140, 23);
+            txtPort.TabIndex = 5;
+            txtPort.Validating += txtPort_Validating;
+            // 
+            // txtFilename1
+            // 
+            txtFilename1.Location = new System.Drawing.Point(194, 150);
+            txtFilename1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtFilename1.Name = "txtFilename1";
+            txtFilename1.Size = new System.Drawing.Size(140, 23);
+            txtFilename1.TabIndex = 9;
+            // 
+            // lbFilename1
+            // 
+            lbFilename1.AutoSize = true;
+            lbFilename1.Location = new System.Drawing.Point(62, 153);
+            lbFilename1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lbFilename1.Name = "lbFilename1";
+            lbFilename1.Size = new System.Drawing.Size(123, 15);
+            lbFilename1.TabIndex = 8;
+            lbFilename1.Text = "Program #1 Filename:";
+            // 
+            // txtFilename2
+            // 
+            txtFilename2.Location = new System.Drawing.Point(194, 185);
+            txtFilename2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtFilename2.Name = "txtFilename2";
+            txtFilename2.Size = new System.Drawing.Size(140, 23);
+            txtFilename2.TabIndex = 11;
+            // 
+            // lbFilename2
+            // 
+            lbFilename2.AutoSize = true;
+            lbFilename2.Location = new System.Drawing.Point(63, 188);
+            lbFilename2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lbFilename2.Name = "lbFilename2";
+            lbFilename2.Size = new System.Drawing.Size(123, 15);
+            lbFilename2.TabIndex = 10;
+            lbFilename2.Text = "Program #2 Filename:";
+            // 
+            // SettingsForm
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(414, 264);
+            Controls.Add(txtFilename2);
+            Controls.Add(lbFilename2);
+            Controls.Add(txtFilename1);
+            Controls.Add(lbFilename1);
+            Controls.Add(txtPort);
+            Controls.Add(txtSecretCode);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOk);
+            Controls.Add(cbxTrayCommand);
+            Controls.Add(lbPort);
+            Controls.Add(lbSecretCode);
+            Controls.Add(lbDefaultCommand);
+            Controls.Add(chkAutoLoad);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "SettingsForm";
+            Text = "Settings";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -166,5 +209,9 @@
         private System.Windows.Forms.TextBox txtSecretCode;
         private System.Windows.Forms.Label lbPort;
         private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.TextBox txtFilename1;
+        private System.Windows.Forms.Label lbFilename1;
+        private System.Windows.Forms.TextBox txtFilename2;
+        private System.Windows.Forms.Label lbFilename2;
     }
 }

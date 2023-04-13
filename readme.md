@@ -37,6 +37,12 @@ http://remote-host-name:5001/secret/
 * http://remote-host-name:5001/secret/lock/
 * http://remote-host-name:5001/secret/restart/
 * http://remote-host-name:5001/secret/forceshutdown
+The following will execute a program if added to the settings:
+* http://remote-host-name:5001/secret/program1
+* http://remote-host-name:5001/secret/program2
+	NOTE: program files need to be added into the Remote Shutdown Manager directory i.e. calc.exe
+	folders may be used if placed inside the Remote Shutdown Manager directory i.e. progfolder/calc.exe
+
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
 
