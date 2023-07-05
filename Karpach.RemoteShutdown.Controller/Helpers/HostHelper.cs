@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Karpach.RemoteShutdown.Controller.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,15 +14,17 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
     public class HostHelper : IHostHelper
     {
         private readonly ITrayCommandHelper _trayCommandHelper;
+        private readonly DelayForm _delayForm;
         private CancellationTokenSource _cancellationTokenSource;
         private Task _hostTask;
 
         public string SecretCode { get; set; }
         public TrayCommandType DefaultCommand { get; set; }
 
-        public HostHelper(ITrayCommandHelper trayCommandHelper)
+        public HostHelper(ITrayCommandHelper trayCommandHelper, DelayForm delayForm)
         {
             _trayCommandHelper = trayCommandHelper;
+            _delayForm = delayForm;
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
@@ -41,7 +46,7 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                         app.Run(async context =>
                         {
 #pragma warning disable 4014
-                            ProcessRequestAsync(context.Request.Path.Value);
+                            ProcessRequestAsync(context.Request.Path.Value, context.Request.Query);
 #pragma warning restore 4014
                             await context.Response.WriteAsync("Ok");
                         });
@@ -56,7 +61,7 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
             _cancellationTokenSource.Cancel();
         }
 
-        internal async Task ProcessRequestAsync(string url)
+        internal async Task ProcessRequestAsync(string url, IQueryCollection query)
         {
             await Task.Delay(1000).ConfigureAwait(false);
             if (!string.IsNullOrEmpty(SecretCode) && !url.StartsWith($"/{SecretCode}/"))
@@ -75,7 +80,37 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                 return;
             }
             commandType = commandType ?? DefaultCommand;
-            _trayCommandHelper.RunCommand(commandType.Value);
+
+            bool runCommand = ProcessRequestDelayAsync(query, commandType.Value);
+            if (runCommand)
+            {
+                _trayCommandHelper.RunCommand(commandType.Value);
+            }
+        }
+
+        /// <summary>
+        /// Check the the current request should be delayed. If so, display a modal
+        /// </summary>
+        /// <returns>True if the operation can continue. False if the user aborted the operation</returns>
+        internal bool ProcessRequestDelayAsync(IQueryCollection query, TrayCommandType commandType)
+        {
+            if (query.ContainsKey("delay"))
+            {
+                string delayString = query["delay"][0];
+                if (!int.TryParse(delayString, out int delay))
+                {
+                    return true;
+                }
+
+                _delayForm.CommandType = commandType;
+                _delayForm.Delay = delay;
+                DialogResult dialogResult = _delayForm.ShowDialog();
+
+                if (dialogResult == DialogResult.Abort)
+                    return false;
+            }
+
+            return true;
         }
     }
 }
