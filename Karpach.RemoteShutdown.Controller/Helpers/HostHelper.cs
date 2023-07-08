@@ -106,8 +106,10 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
                 _delayForm.Delay = delay;
                 DialogResult dialogResult = _delayForm.ShowDialog();
 
-                if (dialogResult == DialogResult.Abort)
+                if (dialogResult != DialogResult.OK)
+                {
                     return false;
+                }
             }
 
             return true;

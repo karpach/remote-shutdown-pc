@@ -52,7 +52,7 @@
             this.labelDelay.Name = "labelDelay";
             this.labelDelay.Size = new System.Drawing.Size(38, 15);
             this.labelDelay.TabIndex = 6;
-            this.labelDelay.Text = "label1";
+            this.labelDelay.Text = "Operation 'Turn screen off' is delayed for 100 seconds.";
             // 
             // DelayForm
             // 
@@ -61,7 +61,7 @@
             this.ClientSize = new System.Drawing.Size(347, 103);
             this.Controls.Add(this.labelDelay);
             this.Controls.Add(this.btnAbort);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
