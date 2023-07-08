@@ -28,7 +28,7 @@ http://remote-host-name:5001/
 
 http://remote-host-name:5001/secret/
 
-3. Sectret code custom command:
+3. Secret code custom command:
 
 * http://remote-host-name:5001/secret/hibernate
 * http://remote-host-name:5001/secret/shutdown
@@ -37,6 +37,13 @@ http://remote-host-name:5001/secret/
 * http://remote-host-name:5001/secret/lock/
 * http://remote-host-name:5001/secret/restart/
 * http://remote-host-name:5001/secret/forceshutdown
+
+4. Delaying a command
+
+It is possible to delay a command. When delayed, a dialog will be shown, allowing the user to abort the operation.
+Simply add the parameter ?delay={seconds} to your get request
+
+* http://remote-host-name:5001/secret/command?delay=60
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
 

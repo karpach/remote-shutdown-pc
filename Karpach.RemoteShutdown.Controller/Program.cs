@@ -23,6 +23,7 @@ namespace Karpach.RemoteShutdown.Controller
             builder.RegisterType<TrayCommandHelper>().As<ITrayCommandHelper>().SingleInstance();
             builder.RegisterType<ControllerApplicationContext>().AsSelf();
             builder.RegisterType<SettingsForm>().AsSelf();
+            builder.RegisterType<DelayForm>().AsSelf();
             builder.RegisterType<HostHelper>().As<IHostHelper>();
             Container = builder.Build();
             Application.EnableVisualStyles();
