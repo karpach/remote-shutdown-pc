@@ -7,7 +7,7 @@ namespace Karpach.RemoteShutdown.Controller.Tests
     [TestFixture]
     public class TrayCommandTests
     {
-        [Test, Ignore("Local test for commands")]
+        [Test, Explicit("Local test for commands")]
         public void TestTurnScreenOff()
         {
             // Arrange

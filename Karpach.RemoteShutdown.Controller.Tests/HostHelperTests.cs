@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Karpach.RemoteShutdown.Controller.Helpers;
 using Karpach.RemoteShutdown.Controller.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Moq;
 using Moq.AutoMock;
 using NUnit.Framework;
@@ -29,10 +31,11 @@ namespace Karpach.RemoteShutdown.Controller.Tests
         public async Task ProcessRequestAsync_Ignore_Secret(string commandText, TrayCommandType command)
         {
             // Arrange                        
-            _mocker.GetMock<ITrayCommandHelper>().Setup(x => x.GetCommandType(commandText)).Returns(command);            
+            _mocker.GetMock<ITrayCommandHelper>().Setup(x => x.GetCommandType(commandText)).Returns(command);
+            var queryCollection = new Mock<IQueryCollection>().Object;
 
             // Act
-            await _hostHelper.ProcessRequestAsync($"/someCode/{commandText}").ConfigureAwait(false);
+            await _hostHelper.ProcessRequestAsync($"/someCode/{commandText}", queryCollection).ConfigureAwait(false);
 
             // Assert
             _mocker.Verify<ITrayCommandHelper>(x => x.RunCommand(command), Times.Once);
@@ -46,9 +49,10 @@ namespace Karpach.RemoteShutdown.Controller.Tests
         {
             // Arrange            
             _mocker.GetMock<ITrayCommandHelper>().Setup(x => x.GetCommandType(commandText)).Returns(command);
+            var queryCollection = new Mock<IQueryCollection>().Object;
 
             // Act
-            await _hostHelper.ProcessRequestAsync($"/{commandText}").ConfigureAwait(false);
+            await _hostHelper.ProcessRequestAsync($"/{commandText}", queryCollection).ConfigureAwait(false);
 
             // Assert
             _mocker.Verify<ITrayCommandHelper>(x => x.RunCommand(command), Times.Once);
@@ -60,10 +64,11 @@ namespace Karpach.RemoteShutdown.Controller.Tests
             // Arrange            
             _hostHelper.SecretCode = "secret_code";
             string commandText = "hibernate";
+            var queryCollection = new Mock<IQueryCollection>().Object;
             _mocker.GetMock<ITrayCommandHelper>().Setup(x => x.GetCommandType(commandText)).Returns(TrayCommandType.Hibernate);
 
             // Act
-            await _hostHelper.ProcessRequestAsync($"/{commandText}").ConfigureAwait(false);
+            await _hostHelper.ProcessRequestAsync($"/{commandText}", queryCollection).ConfigureAwait(false);
 
             // Assert
             _mocker.Verify<ITrayCommandHelper>(x => x.RunCommand(It.IsAny<TrayCommandType>()), Times.Never);
@@ -73,13 +78,15 @@ namespace Karpach.RemoteShutdown.Controller.Tests
         public async Task ProcessRequestAsync_Invalid_Command()
         {
             // Arrange            
-            string commandText = "some_command";            
+            string commandText = "some_command";
+            var queryCollection = new Mock<IQueryCollection>().Object;
 
             // Act
-            await _hostHelper.ProcessRequestAsync($"/{commandText}").ConfigureAwait(false);
+            await _hostHelper.ProcessRequestAsync($"/{commandText}", queryCollection).ConfigureAwait(false);
 
             // Assert
             _mocker.Verify<ITrayCommandHelper>(x => x.RunCommand(It.IsAny<TrayCommandType>()), Times.Never);
         }
     }
 }
+

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,10 +9,16 @@ using Karpach.RemoteShutdown.Controller.Properties;
 
 namespace Karpach.RemoteShutdown.Controller
 {
-    public partial class DelayForm : Form
+    public partial class DelayForm : Form, IDelayForm
     {
         private readonly ITrayCommandHelper _trayCommandHelper;
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public TrayCommandType CommandType { get; set; }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int Delay { get; set; }
 
         public DelayForm(ITrayCommandHelper trayCommandHelper)
@@ -40,3 +47,4 @@ namespace Karpach.RemoteShutdown.Controller
         }
     }
 }
+

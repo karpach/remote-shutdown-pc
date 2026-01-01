@@ -14,14 +14,14 @@ namespace Karpach.RemoteShutdown.Controller.Helpers
     public class HostHelper : IHostHelper
     {
         private readonly ITrayCommandHelper _trayCommandHelper;
-        private readonly DelayForm _delayForm;
+        private readonly IDelayForm _delayForm;
         private CancellationTokenSource _cancellationTokenSource;
         private Task _hostTask;
 
         public string SecretCode { get; set; }
         public TrayCommandType DefaultCommand { get; set; }
 
-        public HostHelper(ITrayCommandHelper trayCommandHelper, DelayForm delayForm)
+        public HostHelper(ITrayCommandHelper trayCommandHelper, IDelayForm delayForm)
         {
             _trayCommandHelper = trayCommandHelper;
             _delayForm = delayForm;
