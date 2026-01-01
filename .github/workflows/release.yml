@@ -1,0 +1,130 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_prefix:
+        description: 'Version prefix (e.g., 1.2). Leave empty to auto-increment patch version.'
+        required: false
+        default: ''
+
+jobs:
+  release:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+    
+    - name: Determine Version
+      id: version
+      shell: pwsh
+      run: |
+        # Get all existing tags
+        $tags = git tag -l "v*" | Sort-Object { [version]($_ -replace '^v', '') } -Descending
+        
+        if ($tags) {
+          $latestTag = $tags[0]
+          $latestVersion = [version]($latestTag -replace '^v', '')
+          Write-Host "Latest tag: $latestTag (version: $latestVersion)"
+        } else {
+          $latestVersion = [version]"1.2.0"
+          Write-Host "No existing tags found, starting from 1.2.0"
+        }
+        
+        # Determine new version
+        if ("${{ github.event.inputs.version_prefix }}" -ne "") {
+          # Manual version prefix provided (e.g., "1.3")
+          $newPrefix = "${{ github.event.inputs.version_prefix }}"
+          $newVersion = [version]"$newPrefix.0"
+          
+          # If the same prefix already exists, increment patch
+          if ($latestVersion.Major -eq $newVersion.Major -and $latestVersion.Minor -eq $newVersion.Minor) {
+            $newVersion = [version]"$newPrefix.$($latestVersion.Build + 1)"
+          }
+        } else {
+          # Auto-increment patch version
+          $newVersion = [version]"$($latestVersion.Major).$($latestVersion.Minor).$($latestVersion.Build + 1)"
+        }
+        
+        $versionTag = "v$newVersion"
+        Write-Host "New version: $newVersion"
+        Write-Host "version=$newVersion" >> $env:GITHUB_OUTPUT
+        Write-Host "version_tag=$versionTag" >> $env:GITHUB_OUTPUT
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build Release
+      run: dotnet build --configuration Release --no-restore -p:Version=${{ steps.version.outputs.version }}
+    
+    - name: Publish Executable
+      run: dotnet publish Karpach.RemoteShutdown.Controller/Karpach.RemoteShutdown.Controller.csproj --configuration Release --output ./publish -p:Version=${{ steps.version.outputs.version }}
+    
+    - name: Create Source Archive
+      shell: pwsh
+      run: |
+        # Create source code archive (exclude .git, bin, obj, .vs, etc.)
+        $excludePatterns = @('.git', '.github', 'bin', 'obj', '.vs', '.vscode', '*.user', 'packages', '.nuget')
+        
+        $sourceDir = "."
+        $archiveName = "SourceCode-${{ steps.version.outputs.version }}.zip"
+        
+        # Create temporary file list
+        $tempFileList = New-TemporaryFile
+        Get-ChildItem -Path $sourceDir -Recurse -File |
+          Where-Object {
+            $file = $_
+            $excluded = $false
+            foreach ($pattern in $excludePatterns) {
+              if ($file.FullName -like "*$pattern*") {
+                $excluded = $true
+                break
+              }
+            }
+            -not $excluded
+          } |
+          ForEach-Object { $_.FullName -replace [regex]::Escape("$sourceDir\"), "" } |
+          Out-File -FilePath $tempFileList -Encoding UTF8
+        
+        # Create archive
+        7z a -w $sourceDir $archiveName @$tempFileList
+        
+        Remove-Item $tempFileList
+        Write-Host "Created source archive: $archiveName"
+    
+    - name: Create Executable Archive
+      shell: pwsh
+      run: |
+        $publishDir = "publish"
+        $archiveName = "remote-shutdown-pc-${{ steps.version.outputs.version }}.zip"
+        
+        # Create archive with published files
+        7z a $archiveName "$publishDir\*"
+        Write-Host "Created executable archive: $archiveName"
+    
+    - name: Create Git Tag
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git tag -a ${{ steps.version.outputs.version_tag }} -m "Release version ${{ steps.version.outputs.version }}"
+        git push origin ${{ steps.version.outputs.version_tag }}
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.version.outputs.version_tag }}
+        name: Release ${{ steps.version.outputs.version }}
+        draft: false
+        prerelease: false
+        files: |
+          SourceCode-${{ steps.version.outputs.version }}.zip
+          remote-shutdown-pc-${{ steps.version.outputs.version }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
