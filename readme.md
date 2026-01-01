@@ -47,4 +47,4 @@ Simply add the parameter ?delay={seconds} to your get request
 
 The application can be easily used with IFTTT or AutoVoice to shutdown PC remotely.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/u1txabmiwqqlgcot?svg=true)](https://ci.appveyor.com/project/karpach/remote-shutdown-pc)
+[![Build and Test](https://github.com/karpach/remote-shutdown-pc/actions/workflows/build.yml/badge.svg)](https://github.com/karpach/remote-shutdown-pc/actions)
