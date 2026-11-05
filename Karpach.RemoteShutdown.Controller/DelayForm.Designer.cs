@@ -68,6 +68,7 @@
             this.Name = "DelayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Operation delay";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
         }
